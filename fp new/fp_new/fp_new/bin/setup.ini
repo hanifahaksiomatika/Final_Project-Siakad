@@ -1,0 +1,45 @@
+[Setup]
+AppName=SI Perpustakaan Univ AMIKOM Yogyakarta
+AppVerName=SI Perpustakaan Univ AMIKOM Yogyakarta Versi 1.0.0
+AppPublisher=Kamarudin
+AppCopyright=Copyright © 2021. Kamarudin
+DefaultDirName={pf}\SI Perpus
+DefaultGroupName=SI Perpus
+OutputDir=file setup
+OutputBaseFilename=SetupSIPerpustakaan
+DisableProgramGroupPage = yes
+CreateUninstallRegKey = yes
+Uninstallable = yes
+UninstallFilesDir={app}\uninst
+UninstallDisplayIcon={app}\PerpustakaanAppMVC.exe,0
+UninstallDisplayName=SI Perpustakaan Univ AMIKOM Yogyakarta
+VersionInfoVersion=1.0.0.0
+SetupIconFile=Setup.ico
+
+[Languages]
+Name: ina; MessagesFile: Indonesian.isl
+
+[Tasks]
+Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
+
+
+[Files]
+;file-file aplikasi
+Source: Debug\PerpustakaanAppMVC.exe; DestDir: {app}; Flags: ignoreversion
+Source: Debug\PerpustakaanAppMVC.exe.config; DestDir: {app}; Flags: ignoreversion
+Source: Debug\Database\DbPerpustakaan.db; DestDir: {app}\Database; Flags: ignoreversion
+
+; file-file pendukung
+Source: Debug\System.Data.SQLite.dll; DestDir: {app}; Flags: ignoreversion
+Source: Debug\x64\SQLite.Interop.dll; DestDir: {app}\x64; Flags: ignoreversion
+Source: Debug\x86\SQLite.Interop.dll; DestDir: {app}\x86; Flags: ignoreversion
+
+Source: book.ico; DestDir: {app}; Flags: ignoreversion
+
+[Icons]
+Name: {group}\SI Perpustakaan Univ AMIKOM Yogyakarta; Filename: {app}\PerpustakaanAppMVC.exe; WorkingDir: {app}; IconFilename: {app}\book.ico
+Name: {userdesktop}\SI Perpustakaan Univ AMIKOM Yogyakarta; Filename: {app}\PerpustakaanAppMVC.exe; WorkingDir: {app}; IconFilename: {app}\book.ico; Tasks: desktopicon
+
+[Registry]
+;mencatat lokasi instalasi program, ini dibutuhkan jika kita ingin membuat paket instalasi update
+Root: HKCU; Subkey: "Software\SI Perpus"; ValueName: "installDir"; ValueType: String; ValueData: {app}; Flags: uninsdeletevalue
